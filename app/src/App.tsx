@@ -11,27 +11,23 @@ function App() {
 
   // Inicializar o SDK do Farcaster
   useEffect(() => {
-    const initializeSDK = async () => {
-      try {
-        // Indicar que o app está pronto e esconder a tela de splash
-        await sdk.actions.ready();
-        setIsSDKReady(true);
-        
-        // Esconder a tela de splash após 1.5 segundos
-        setTimeout(() => {
-          setShowSplash(false);
-        }, 1500);
-      } catch (error) {
-        console.error("Error initializing Farcaster SDK:", error);
-        // Mesmo com erro, esconder a tela de splash após um tempo
-        setTimeout(() => {
-          setShowSplash(false);
-        }, 1500);
-      }
-    };
+  const initializeSDK = async () => {
+    try {
+      await Promise.race([
+        sdk.actions.ready(),
+        new Promise((resolve) => setTimeout(resolve, 2000)) // fallback de 2s
+      ]);
+      setIsSDKReady(true);
+    } catch (error) {
+      console.error("Error initializing Farcaster SDK:", error);
+    } finally {
+      setShowSplash(false); // sempre remove splash
+    }
+  };
 
-    initializeSDK();
-  }, []);
+  initializeSDK();
+}, []);
+
 
   // Função chamada quando o pagamento é concluído
   const handlePaymentComplete = () => {
