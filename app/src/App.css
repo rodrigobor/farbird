@@ -1,0 +1,87 @@
+.App {
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  margin-bottom: 20px;
+}
+
+.App-header h1 {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+footer {
+  margin-top: auto;
+  padding: 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #70c5ce;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.splash-content {
+  text-align: center;
+  color: white;
+}
+
+.splash-content h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.loading-spinner {
+  margin: 30px auto;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 10px;
+  }
+  
+  .App-header h1 {
+    font-size: 24px;
+  }
+  
+  .splash-content h1 {
+    font-size: 32px;
+  }
+}

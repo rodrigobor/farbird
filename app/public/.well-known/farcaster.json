@@ -1,0 +1,14 @@
+{
+  "frame": {
+    "version": "1",
+    "name": "Far Bird",
+    "iconUrl": "https://farbird.xyz/assets/icon.png",
+    "homeUrl": "https://farbird.xyz",
+    "splashImageUrl": "https://farbird.xyz/assets/splash.png",
+    "splashBackgroundColor": "#ffffff",
+    "subtitle": "Tap to fly!",
+    "description": "Fly through the pipes and challenge your friends. Pay 0.10 USDC to play.",
+    "primaryCategory": "games",
+    "tags": ["flappy", "bird", "arcade", "miniapp", "farcaster"]
+  }
+}
