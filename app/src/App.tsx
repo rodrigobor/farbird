@@ -20,17 +20,13 @@ function App() {
       setIsSDKReady(true);
 
       // Solicitar ao usuário que adicione o Mini App aos favoritos
-      const result = await sdk.actions.addMiniApp();
-      if (result?.notificationDetails) {
-        console.log('Mini App added to favorites!');
-        console.log('Notification details:', result.notificationDetails);
-      } else {
-        console.warn('User declined or canceled adding to favorites');
-      }
+      await sdk.actions.addMiniApp();
     } catch (error) {
-      console.error("Error adding to favorites:", error);
-    } finally {
-      setShowSplash(false); // sempre remove splash
+      console.error("Error initializing Farcaster SDK:", error);
+      // Mesmo com erro, esconder a tela de splash após um tempo
+      setTimeout(() => {
+        setShowSplash(false);
+      }, 1500);
     }
   };
 
