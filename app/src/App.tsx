@@ -41,6 +41,23 @@ function App() {
     setIsPaymentComplete(false);
   };
 
+  const handleAddToFavorites = async () => {
+  try {
+    const result = await sdk.actions.addMiniApp();
+
+    if (result?.notificationDetails) {
+      const { notificationDetails } = result;
+      console.log('Mini App added to favorites!');
+      console.log('Notification details:', notificationDetails);
+    } else {
+      console.warn('User declined or canceled adding to favorites');
+    }
+
+  } catch (error) {
+    console.error('Error adding to favorites:', error);
+  }
+};
+
   return (
     <div className="App">
       {showSplash ? (
@@ -67,8 +84,12 @@ function App() {
           </main>
           
           <footer>
-            <p>Developed by RodrigoPorsh</p>
-          </footer>
+          <p>Developed by RodrigoPorsh</p>
+          <button onClick={handleAddToFavorites} className="favorite-button">
+            ⭐ Add to Favorites
+          </button>
+        </footer>
+
         </>
       )}
     </div>
